@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Date1 @@bind</h1>
+<input type="date" class="form-control" @bind="Date1" />
+
+<h1>Date2 @@bind-Value</h1>
+<EditForm Model="Date2">
+    <InputDate @bind-Value="Date2" class="form-control" />
+</EditForm>
+
+<h1>Date3 @@bind-Value with extra model</h1>
+<EditForm Model="MyModel">
+    <InputDate @bind-Value="MyModel.Date3" class="form-control" />
+</EditForm>
+
+@code {
+    public DateTime Date1 { get; set; }
+    public DateTime Date2 { get; set; }
+    public DateModel MyModel { get; set; } = new();
+
+    public class DateModel
+    {
+        public DateTime Date3 { get; set; }
+    }
+}
